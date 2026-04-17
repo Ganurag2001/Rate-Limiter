@@ -1,0 +1,12 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Build and Run
+    init: ./mvnw clean package
+    command: |
+      docker build -t ratelimit-app .
+      docker run -p 8080:8080 ratelimit-app
+ports:
+  - port: 8080
+    onOpen: open-preview
